@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: lightgray;
+}
+
+.name {
+    background-color: gray;
+    border-radius: 20px;
+    border: 5px solid black;
+    padding: 50px 80px;
+    display: inline-block;
+}
+
+.input-container {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container input,
+.input-container button {
+    margin: 5px;
+    padding: 10px;
+}
+
+.input-container button {
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
