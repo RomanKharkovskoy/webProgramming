@@ -12,23 +12,25 @@ async function task2() {
 };
 
 // Запуск сервера BrowserSync
-function browsersyncServe(){
+function browsersyncServe(cb){
   browsersync.init({
     server: {
-      baseDir: '.' // Корневая директория -- текущий рабочий каталог '.'
+      baseDir: '.'
     }
   });
+  cb();
 }
 
-// Функция для перезагрузки страницы
-function browsersyncReload(){
+// Функция выполняет перезагрузку браузера
+function browsersyncReload(cb){
   browsersync.reload();
+  cb();
 }
 
 // Функция, следящая за изменениями в файлах html, css, js
 // Если функция watch() заметила изменение, то выполняется функция browsersyncReload()
 function watchTask(){
-  watch('index.html', browsersyncReload);
+  watch('*.html', browsersyncReload);
   watch(['src/css/*.css', 'src/js/*.js'], browsersyncReload);
 }
 
@@ -48,6 +50,6 @@ exports.parallel = parallel(
 
 // Таск для пункта б)
 exports.openProject = series(
-  browsersyncServe, // Отображение файлов проекта в браузере
-  watchTask // Перезагрузка страницы при изменении одного из контролируемых файлов проекта
-);
+  browsersyncServe,
+  watchTask 
+)
